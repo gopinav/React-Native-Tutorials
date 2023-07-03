@@ -7,6 +7,7 @@ import {
   Button,
   Pressable,
   Modal,
+  StatusBar,
 } from "react-native";
 import { useState } from "react";
 
@@ -16,12 +17,12 @@ export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: "plum", padding: 60 }}>
+      <StatusBar barStyle="dark-content" backgroundColor="lightblue" />
       <ScrollView>
         <Button
-          title="Click me"
-          // onPress={() => StatusBar.setHidden(true)}
-          onPress={() => setIsModalVisible(true)}
-          // onPress={() => console.log("Button pressed")}
+          title="Press"
+          // onPress={() => setIsModalVisible(true)}
+          onPress={() => console.log("Button pressed")}
           color="midnightblue"
         />
         <Pressable
@@ -69,7 +70,7 @@ export default function App() {
         </Text>
       </ImageBackground> */}
       </ScrollView>
-      <Modal
+      {/* <Modal
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
         animationType="slide"
@@ -83,7 +84,7 @@ export default function App() {
             color="midnightblue"
           />
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 }
