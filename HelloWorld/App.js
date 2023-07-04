@@ -9,6 +9,7 @@ import {
   Modal,
   StatusBar,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import { useState } from "react";
 
@@ -18,6 +19,24 @@ export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: "plum", padding: 60 }}>
+      <Button title="Press" onPress={() => Alert.alert("Invalid data!")} />
+      <Button
+        title="Press"
+        onPress={() => Alert.alert("Invalid data!", "dob incorrect!")}
+      />
+      <Button
+        title="Press"
+        onPress={() =>
+          Alert.alert("Invalid data!", "dob incorrect!", [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "destructive",
+            },
+            { text: "OK", onPress: () => console.log("OK Pressed") },
+          ])
+        }
+      />
       <ActivityIndicator size="large" color="midnightblue" />
       <StatusBar barStyle="dark-content" backgroundColor="lightblue" />
       <ScrollView>
