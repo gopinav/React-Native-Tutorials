@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={[styles.box, styles.lightblueBg]}>
+        <Text>Lightblue box</Text>
+      </View>
+      <View style={[styles.box, styles.lightgreenBg]}>
+        <Text>Lightgreen box</Text>
+      </View>
     </View>
   );
 }
@@ -13,8 +16,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "plum",
+    padding: 60,
+  },
+  box: {
+    width: 100,
+    height: 100,
+    padding: 10,
+  },
+  lightblueBg: {
+    backgroundColor: "lightblue",
+  },
+  lightgreenBg: {
+    backgroundColor: "lightgreen",
   },
 });
