@@ -11,8 +11,6 @@ export default function App() {
       <Box style={{ backgroundColor: "#6b0803" }}>Box 5</Box>
       <Box style={{ backgroundColor: "#1c4c56" }}>Box 6</Box>
       <Box style={{ backgroundColor: "#b95f21" }}>Box 7</Box>
-      <Box style={{ backgroundColor: "#01243a" }}>Box 8</Box>
-      <Box style={{ backgroundColor: "#7aa100" }}>Box 9</Box>
     </View>
   );
 }
