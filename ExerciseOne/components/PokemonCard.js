@@ -61,7 +61,6 @@ export default function PokemonCard({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    width: "90%",
     borderRadius: 16,
     borderWidth: 2,
     padding: 16,
