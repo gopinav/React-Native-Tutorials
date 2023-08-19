@@ -1,0 +1,22 @@
+[
+  { "id": "1", "type": "Grass", "name": "Bulbasaur" },
+  { "id": "2", "type": "Grass", "name": "Ivysaur" },
+  { "id": "3", "type": "Grass", "name": "Venusaur" },
+  { "id": "4", "type": "Fire", "name": "Charmander" },
+  { "id": "5", "type": "Fire", "name": "Charmeleon" },
+  { "id": "6", "type": "Fire", "name": "Charizard" },
+  { "id": "7", "type": "Water", "name": "Squirtle" },
+  { "id": "8", "type": "Water", "name": "Wartortle" },
+  { "id": "9", "type": "Water", "name": "Blastoise" },
+  { "id": "10", "type": "Bug", "name": "Caterpie" },
+  { "id": "11", "type": "Bug", "name": "Metapod" },
+  { "id": "12", "type": "Bug", "name": "Butterfree" },
+  { "id": "13", "type": "Normal", "name": "Pidgey" },
+  { "id": "14", "type": "Normal", "name": "Pidgeotto" },
+  { "id": "15", "type": "Normal", "name": "Pidgeot" },
+  { "id": "16", "type": "Electric", "name": "Pikachu" },
+  { "id": "17", "type": "Electric", "name": "Raichu" },
+  { "id": "18", "type": "Ground", "name": "Sandshrew" },
+  { "id": "19", "type": "Ground", "name": "Sandslash" },
+  { "id": "20", "type": "Poison", "name": "Nidoran" }
+]
