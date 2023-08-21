@@ -1,14 +1,15 @@
 [
-  { "id": 1, "type": "Grass", "pokemon": ["Bulbasaur", "Ivysaur", "Venusaur"] },
   {
-    "id": 2,
+    "type": "Grass",
+    "data": ["Bulbasaur", "Ivysaur", "Venusaur"]
+  },
+  {
     "type": "Fire",
-    "pokemon": ["Charmander", "Charmeleon", "Charizard"]
+    "data": ["Charmander", "Charmeleon", "Charizard"]
   },
   {
-    "id": 3,
     "type": "Water",
-    "pokemon": ["Squirtle", "Wartortle", "Blastoise"]
+    "data": ["Squirtle", "Wartortle", "Blastoise"]
   },
-  { "id": 4, "type": "Electric", "pokemon": ["Pikachu", "Raichu"] }
+  { "type": "Electric", "data": ["Pikachu", "Raichu"] }
 ]
