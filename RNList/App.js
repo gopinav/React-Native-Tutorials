@@ -3,7 +3,6 @@ import {
   Text,
   View,
   SafeAreaView,
-  ScrollView,
   FlatList,
   StatusBar,
 } from "react-native";
@@ -36,6 +35,21 @@ export default function App() {
             );
           }}
           keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={
+            <View
+              style={{
+                height: 16,
+              }}
+            />
+          }
+          ListEmptyComponent={<Text>No Items Found</Text>}
+          ListHeaderComponent={
+            <Text style={styles.headerText}>Pokemon List</Text>
+          }
+          ListFooterComponent={
+            <Text style={styles.footerText}>End of list</Text>
+          }
+          // horizontal={true}
         />
       </View>
     </SafeAreaView>
@@ -55,10 +69,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     padding: 16,
     borderRadius: 8,
-    marginBottom: 16,
+    // marginBottom: 16,
     borderWidth: 1,
   },
   cardText: {
     fontSize: 30,
+  },
+  headerText: {
+    fontSize: 24,
+    textAlign: "center",
+    marginBottom: 12,
+  },
+  footerText: {
+    fontSize: 24,
+    textAlign: "center",
+    marginTop: 12,
   },
 });

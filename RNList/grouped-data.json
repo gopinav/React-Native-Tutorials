@@ -1,0 +1,14 @@
+[
+  { "id": 1, "type": "Grass", "pokemon": ["Bulbasaur", "Ivysaur", "Venusaur"] },
+  {
+    "id": 2,
+    "type": "Fire",
+    "pokemon": ["Charmander", "Charmeleon", "Charizard"]
+  },
+  {
+    "id": 3,
+    "type": "Water",
+    "pokemon": ["Squirtle", "Wartortle", "Blastoise"]
+  },
+  { "id": 4, "type": "Electric", "pokemon": ["Pikachu", "Raichu"] }
+]
