@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "serve-json": "json-server --watch db.json"
   },
   "dependencies": {
     "expo": "~49.0.8",
@@ -15,7 +16,8 @@
     "react-native": "0.72.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "json-server": "^0.17.3"
   },
   "private": true
 }
