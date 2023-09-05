@@ -12,49 +12,54 @@ import {
 } from "react-native";
 
 const App = () => {
-  const [pokemonList, setPokemonList] = useState([]);
+  const [postList, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [pokemonName, setPokemonName] = useState("");
-  const [pokemonType, setPokemonType] = useState("");
+  const [postTitle, setPostTitle] = useState("");
+  const [postBody, setPostBody] = useState("");
   const [isPosting, setIsPosting] = useState(false);
   const [error, setError] = useState("");
 
-  const fetchData = async () => {
+  const fetchData = async (limit = 10) => {
     try {
-      const response = await fetch("http://localhost:3000/pokemon");
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
+      );
       const data = await response.json();
-      setPokemonList(data);
+      setPostList(data);
       setIsLoading(false);
       setError("");
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsLoading(false);
-      setError("Failed to fetch Pokémon list.");
+      setError("Failed to fetch post list.");
     }
   };
 
-  const addPokemon = async () => {
+  const addPost = async () => {
     setIsPosting(true);
     try {
-      const response = await fetch("http://localhost:3000/pokemon", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: pokemonName,
-          type: pokemonType,
-        }),
-      });
-      const newPokemon = await response.json();
-      setPokemonList([...pokemonList, newPokemon]);
-      setPokemonName("");
-      setPokemonType("");
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: postTitle,
+            body: postBody,
+          }),
+        }
+      );
+      const newPost = await response.json();
+      setPostList([newPost, ...postList]);
+      setPostTitle("");
+      setPostBody("");
       setError("");
     } catch (error) {
-      console.error("Error adding new Pokémon:", error);
-      setError("Failed to add new Pokémon.");
+      console.error("Error adding new post:", error);
+      setError("Failed to add new post.");
     }
     setIsPosting(false);
   };
@@ -65,7 +70,7 @@ const App = () => {
 
   const handleRefresh = () => {
     setRefreshing(true);
-    fetchData();
+    fetchData(20);
     setRefreshing(false);
   };
 
@@ -89,50 +94,42 @@ const App = () => {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
-              placeholder="Pokemon Name"
-              value={pokemonName}
-              onChangeText={setPokemonName}
+              placeholder="Post Title"
+              value={postTitle}
+              onChangeText={setPostTitle}
             />
             <TextInput
               style={styles.input}
-              placeholder="Pokemon Type"
-              value={pokemonType}
-              onChangeText={setPokemonType}
+              placeholder="Post Body"
+              value={postBody}
+              onChangeText={setPostBody}
             />
             <Button
-              title={isPosting ? "Adding..." : "Add Pokemon"}
-              onPress={addPokemon}
+              title={isPosting ? "Adding..." : "Add Post"}
+              onPress={addPost}
               disabled={isPosting}
             />
           </View>
           <View style={styles.listContainer}>
             <FlatList
-              data={pokemonList}
-              renderItem={({ item }) => {
-                return (
-                  <View style={styles.card}>
-                    <Text style={styles.nameText}>{item.name}</Text>
-                    <Text style={styles.typeText}>{item.type}</Text>
-                  </View>
-                );
-              }}
-              keyExtractor={(item) => item.id.toString()}
-              ItemSeparatorComponent={() => (
-                <View
-                  style={{
-                    height: 16,
-                  }}
-                />
+              data={postList}
+              renderItem={({ item }) => (
+                <View style={styles.card}>
+                  <Text style={styles.nameText}>{item.title}</Text>
+                  <Text style={styles.typeText}>{item.body}</Text>
+                </View>
               )}
-              ListEmptyComponent={<Text>No Items Found</Text>}
+              keyExtractor={(item) => item.id.toString()}
+              ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+              ListEmptyComponent={<Text>No Posts Found</Text>}
               ListHeaderComponent={
-                <Text style={styles.headerText}>Pokemon List</Text>
+                <Text style={styles.headerText}>Post List</Text>
               }
               ListFooterComponent={
                 <Text style={styles.footerText}>End of list</Text>
               }
-              refreshing={refreshing} // Pass the refreshing state
-              onRefresh={handleRefresh} // Pass the onRefresh function
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
             />
           </View>
         </>
