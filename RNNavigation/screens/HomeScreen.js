@@ -2,14 +2,13 @@ import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function HomeScreen() {
-  const navigation = useNavigation();
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
       <Button
         title="Go to About"
-        onPress={() => navigation.navigate("About")}
+        onPress={() => navigation.navigate("About", { name: "Vishwas" })}
       />
     </View>
   );
