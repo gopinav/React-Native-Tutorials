@@ -1,3 +1,4 @@
+import { Pressable, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
@@ -14,6 +15,11 @@ export default function App() {
           headerTitleStyle: { fontWeight: "bold" },
           headerTintColor: "#fff",
           contentStyle: { backgroundColor: "#e8e4f3" },
+          headerRight: () => (
+            <Pressable onPress={() => alert("Menu button pressed!")}>
+              <Text style={{ color: "#fff", fontSize: 16 }}>Menu</Text>
+            </Pressable>
+          ),
         }}
       >
         <Stack.Screen
@@ -29,6 +35,9 @@ export default function App() {
           initialParams={{
             name: "Guest",
           }}
+          options={({ route }) => ({
+            title: route.params.name,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
