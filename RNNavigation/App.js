@@ -1,30 +1,34 @@
-import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import DashboardScreen from "./screens/DashboardScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SettingsScreen from "./screens/SettingsScreen";
+import CourseListScreen from "./screens/CourseList";
+import ProfileScreen from "./screens/Profile";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Dashboard">
-        <Drawer.Screen
-          name="Dashboard"
-          component={DashboardScreen}
+      <Tab.Navigator
+        screenOptions={{
+          //   tabBarShowLabel: false,
+          tabBarLabelPosition: "below-icon",
+          tabBarActiveTintColor: "purple",
+        }}
+      >
+        <Tab.Screen name="Course List" component={CourseListScreen} />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
           options={{
-            title: "My dashboard",
-            drawerLabel: "Dashboard label",
-            drawerActiveTintColor: "#333",
-            drawerActiveBackgroundColor: "lightblue",
-            drawerContentStyle: {
-              backgroundColor: "#c6cbef",
-            },
+            tabBarLabel: "My Profile",
+            tabBarIcon: () => <Ionicons name={"person"} size={20} />,
+            tabBarBadge: 3,
           }}
         />
-        <Drawer.Screen name="Settings" component={SettingsScreen} />
-      </Drawer.Navigator>
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
